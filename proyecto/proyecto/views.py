@@ -166,11 +166,9 @@ def form_editar_usuario(request, id):
 
 # Vista para eliminar un usuario
 
-def eliminar_usuario(request, id):
-    usuario = get_object_or_404(Usuarios, idestudios=id)
+def eliminar_usuario(request, pk):
+    usuario = get_object_or_404(Usuarios, pk=pk)
     if request.method == 'POST':
         usuario.delete()
-        messages.success(request, 'Usuario eliminado exitosamente')
-        return redirect("listar_usuarios")  # Reemplaza "listar_usuarios" con la URL adecuada
-    
+        return redirect('lista_usuarios')
     return render(request, 'eliminar_usuario.html', {'usuario': usuario})

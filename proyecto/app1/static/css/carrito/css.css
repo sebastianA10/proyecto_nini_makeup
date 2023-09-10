@@ -247,30 +247,6 @@ img {
   height: auto;
 }
 
-/* Agregamos estilos para el menú */
-#user-settings-menu {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-#user-settings-menu li {
-  list-style: none;
-  margin-right: 20px;
-}
-
-#user-settings-menu li a {
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-#user-settings-menu li a:hover {
-  background-color: #eee;
-}
-
 /* Ocultamos los formularios por defecto */
 .user-settings-option:not(#change-password) {
   display: none;
@@ -358,6 +334,3 @@ img {
   border: none;
   cursor: pointer;
 }
-
-
-
