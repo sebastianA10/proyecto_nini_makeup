@@ -1,0 +1,24 @@
+
+
+base de datos mysql en la nuve
+
+
+1. MYSQL_URL
+mysql://root:Z8pabdAfXFFvzoNftVUm@containers-us-west-179.railway.app:6753/railway
+
+2. MYSQLDATABASE
+railway
+
+3. MYSQLHOST
+containers-us-west-179.railway.app
+
+4. MYSQLPASSWORD
+Z8pabdAfXFFvzoNftVUm
+
+5. MYSQLPORT
+6753
+
+6. MYSQLUSER
+root
+
+

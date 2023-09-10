@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link type='text/css' href='{% static "css/login.css" %}'rel= 'stylesheet'/>
+</head>
+
+<body>
+    
+<div class="wrapper">
+        <form action="/valida_login/" method="post">
+            <h1>login</h1>
+            
+            <div class="input-box">
+                {% csrf_token %}
+                <input type="text" placeholder="username"required name='email'>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="password"required name='contrasena'>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox"> remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit"  class="btn">login</button>
+
+            <div class="register-link">
+                <p>Dont have an account? <a href="{% url 'registro' %}">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+
+    
+     
+
+</body>
+</html>

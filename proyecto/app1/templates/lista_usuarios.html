@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <ul>
+        {% for usuario in usuarios %}
+            <li>{{ usuario.nombre }} {{ usuario. }} ({{ usuario.email }}) </li>
+            <a href="{% url 'editar_usuario' usuario.pk %}">Editar</a> |
+            <a href="{% url 'eliminar_usuario' usuario.pk %}">Eliminar</a>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crear_usuario' %}">Crear Usuario</a>
+</body>
+</html>
