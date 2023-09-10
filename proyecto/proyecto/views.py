@@ -4,7 +4,6 @@ from django.contrib.auth.hashers import make_password,check_password
 from app1.models import Usuarios
 from app1.forms import UsuariosForm
 from django.shortcuts import render, redirect, get_object_or_404
-from app1.models import Usuarios
 
 
 # registro de usuarios
@@ -100,7 +99,7 @@ def eliminar_usuario(request, pk):
 from django.contrib.auth.hashers import check_password
 from django.contrib import messages
 from django.shortcuts import render
-from app1.models import Usuarios
+
 
 def valida_login(request):
     if request.method == 'POST':
