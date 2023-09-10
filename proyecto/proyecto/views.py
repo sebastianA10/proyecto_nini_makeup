@@ -5,11 +5,6 @@ from app1.models import Usuarios
 from app1.forms import UsuariosForm
 from django.shortcuts import render, redirect, get_object_or_404
 
-
-# registro de usuarios
-
-
-
 # index
 
 
@@ -67,11 +62,23 @@ def crear_usuario(request):
     if request.method == 'POST':
         form = UsuariosForm(request.POST)
         if form.is_valid():
+            # Obtenemos la contraseña sin cifrar del formulario
+            contrasena = form.cleaned_data['contrasena']
+            
+            # Usamos make_password para cifrar la contraseña
+            contrasena_hasheada = make_password(contrasena)
+            
+            # Asignamos la contraseña cifrada al formulario
+            form.cleaned_data['contrasena'] = contrasena_hasheada
+            
+            # Guardamos el formulario
             form.save()
+            
             return redirect('lista_usuarios')
     else:
         form = UsuariosForm()
     return render(request, 'crear_usuario.html', {'form': form})
+
 
 def editar_usuario(request, pk):
     usuario = get_object_or_404(Usuarios, pk=pk)

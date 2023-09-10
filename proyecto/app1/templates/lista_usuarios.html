@@ -1,89 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Lista de Usuarios</title>
-    <style>
-      /* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-
-/* Encabezado */
-h1 {
-    text-align: center;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    margin: 0;
-}
-
-/* Tabla */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #333;
-    color: #fff;
-}
-
-/* Filas alternas */
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-/* Enlaces */
-a {
-    text-decoration: none;
-    color: #007bff;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #0056b3;
-}
-
-/* Acciones */
-.action-links {
-    text-align: center;
-}
-
-.create-user-link {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #333;
-    background-color: #007bff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.create-user-link:hover {
-    background-color: #0056b3;
-    color: #fff;
-}
-
-    </style>
+<link rel="stylesheet" href="{% static 'css/crud/listar.css' %}">
 </head>
 <body>
     <h1>Lista de Usuarios</h1>
