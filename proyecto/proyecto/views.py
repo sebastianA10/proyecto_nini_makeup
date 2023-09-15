@@ -5,6 +5,10 @@ from app1.models import Usuarios
 from app1.forms import UsuariosForm
 from django.shortcuts import render, redirect, get_object_or_404
 
+from app1.models import Administrador
+
+
+
 # index
 
 
@@ -172,3 +176,59 @@ def eliminar_usuario(request, pk):
         usuario.delete()
         return redirect('lista_usuarios')
     return render(request, 'eliminar_usuario.html', {'usuario': usuario})
+
+# login administrador
+
+def administrador(request):
+    if request.method == 'POST':
+        usu = request.POST.get('email')
+        contra = request.POST.get('contrasena')
+     
+        if Usuarios.objects.filter(email=usu).exists():
+            logueo = Usuarios.objects.get(email=usu)
+            passw = check_password(contra, logueo.contrasena)
+            
+            if passw:
+                request.session['seguridad'] = True
+                messages.success(request, 'Bienvenido administrador')
+                return render(request, 'lista_usuarios.html')
+            else:
+                messages.error(request, 'Usuario o contraseña incorrecta')
+                return render(request, 'administrador/inicio_sesion.html')
+       
+    
+    return render(request, 'administrador/inicio_sesion.html')
+
+
+#  registro administrador
+def registro_administrador(request):
+    if request.method == 'POST':
+        nombres = request.POST.get('nombres')
+        apellidos = request.POST.get('apellidos')
+        email = request.POST.get('email')
+        celular = request.POST.get('celular')
+        genero = request.POST.get('genero')
+        contrasena = request.POST.get('contrasena')
+
+        # Hash de la contraseña antes de guardarla en la base de datos
+        contrasena_hasheada = make_password(contrasena)
+
+        # Realiza la validación de datos aquí (si es necesario)
+
+        # Crea un nuevo administrador con los datos proporcionados
+        nuevo_administrador = Administrador(
+            nombres=nombres,
+            apellidos=apellidos,
+            email=email,
+            celular=celular,
+            genero=genero,
+            contrasena=contrasena_hasheada
+        )
+        nuevo_administrador.save()
+
+        messages.success(request, '¡Usuario registrado exitosamente!')
+        return render(request, 'administrador/inicio_sesion.html')
+    else:
+        
+        messages.success(request, '¡ya estas registrado!')
+        return render(request, 'administrador/registro.html')

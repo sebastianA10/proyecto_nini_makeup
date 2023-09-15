@@ -5,10 +5,19 @@
     <meta charset="UTF-8">
     <title>login</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link type='text/css' href='{% static "css/login/login.css" %}'rel= 'stylesheet'/>
+    <link type='text/css' href='{% static "css/administrador/css.css" %}'rel= 'stylesheet'/>
 </head>
 
 <body>
+    {% if messages %}
+    <div class="container">
+        <div class="alert alert-info text-center">
+            {% for message in messages %}
+                {{ message }}<br>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
     
 <div class="wrapper">
         <form action="/valida_login/" method="post">
@@ -25,13 +34,14 @@
             </div>
 
             <div class="remember-forgot">
-                <label><input type="checkbox"> remember me</label>
-                <a href="#">Forgot password?</a>
+                <label><input type="checkbox">recordar contraseña?</label>
+                <a href="#">olvidaste tu contraseña?</a>
             </div>
-            <button type="submit"  class="btn">login</button>
+            <button type="submit"  class="btn">iniciar sesion</button>
 
             <div class="register-link">
-                <p>Dont have an account? <a href="{% url 'registro' %}">Register</a></p>
+                <p>no estas registrado? <a href="{% url 'registro' %}">Registrarse?</a></p>
+                
             </div>
         </form>
     </div>
