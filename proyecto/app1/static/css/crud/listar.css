@@ -1,7 +1,7 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #000;
+    background-color: #c9c9c9;
     color: #fff;
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
 /* Encabezado */
 h1 {
     text-align: center;
-    background-color: #333;
+    background-color: pink  ;
     color: #fff;
     padding: 20px;
     margin: 0;
@@ -22,8 +22,8 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco semi-transparente */
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.952); /* Fondo blanco semi-transparente */
+    color: #0a0a0a;
 }
 
 table, th, td {
@@ -36,24 +36,24 @@ th, td {
 }
 
 th {
-    background-color: #333;
-    color: #fff;
+    background-color: #918d8d;
+    color: #000000;
 }
 
 /* Filas alternas */
 tr:nth-child(even) {
-    background-color: #333; /* Fondo negro hermoso */
+    background-color: #ffffff; /* Fondo negro hermoso */
 }
 
 /* Enlaces */
 a {
     text-decoration: none;
-    color: #ff6600; /* Color naranja */
+    color: #ff4fb6; /* Color naranja */
     transition: color 0.3s;
 }
 
 a:hover {
-    color: #ff3300; /* Color naranja más oscuro al pasar el mouse */
+    color: #b50f70; /* Color naranja más oscuro al pasar el mouse */
 }
 
 /* Acciones */
@@ -68,7 +68,7 @@ a:hover {
     text-transform: uppercase;
     font-weight: bold;
     color: #fff;
-    background-color: #ff6600; /* Botón naranja */
+    background-color: pink; /* Botón naranja */
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -76,5 +76,5 @@ a:hover {
 }
 
 .create-user-link:hover {
-    background-color: #ff3300; /* Botón naranja más oscuro al pasar el mouse */
+    background-color: pink /* Botón naranja más oscuro al pasar el mouse */
 }

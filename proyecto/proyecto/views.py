@@ -53,6 +53,8 @@ def registro(request):
         return render(request, 'registro.html')
     
 
+
+
     
 #  crud completo 
 
@@ -194,9 +196,6 @@ def administrador(request):
                 return render(request, 'lista_usuarios.html')
             else:
                 messages.error(request, 'Usuario o contraseña incorrecta')
-                return render(request, 'administrador/inicio_sesion.html')
-       
-    
     return render(request, 'administrador/inicio_sesion.html')
 
 
@@ -232,3 +231,10 @@ def registro_administrador(request):
         
         messages.success(request, '¡ya estas registrado!')
         return render(request, 'administrador/registro.html')
+    
+
+
+
+
+
+    
