@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %}{% include "include/header.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +10,17 @@
 
 <body>
     {% if messages %}
-    <div class="container">
-        <div class="alert alert-info text-center">
-            {% for message in messages %}
-                {{ message }}<br>
-            {% endfor %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="{% if message.tags %}alert alert-{{ message.tags }}{% endif %}">
+            {{ message }}
         </div>
+        {% endfor %}
     </div>
-{% endif %}
-    
+    {% endif %}
 <div class="wrapper">
         <form action="/valida_login/" method="post">
-            <h1>login</h1>
+            <h1>usuarios</h1>
             
             <div class="input-box">
                 {% csrf_token %}

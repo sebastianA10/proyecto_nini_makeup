@@ -1,11 +1,9 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
-from app1.models import Usuarios
+from app1.models import Usuarios, Administrador
 from app1.forms import UsuariosForm
 from django.shortcuts import render, redirect, get_object_or_404
-
-from app1.models import Administrador
 
 
 
@@ -135,6 +133,8 @@ def valida_login(request):
     
     return render(request, 'login.html')
 
+    
+
 # Vista para listar todos los usuarios
 
 def listar_usuarios(request):
@@ -185,18 +185,25 @@ def administrador(request):
     if request.method == 'POST':
         usu = request.POST.get('email')
         contra = request.POST.get('contrasena')
-     
-        if Usuarios.objects.filter(email=usu).exists():
-            logueo = Usuarios.objects.get(email=usu)
-            passw = check_password(contra, logueo.contrasena)
-            
+
+        if Administrador.objects.filter(email=usu).exists():
+            logueo = Administrador.objects.get(email=usu)  # Correct capitalization here
+            passw = check_password(contra, logueo.contrasena)  # Use check_password function
+
             if passw:
                 request.session['seguridad'] = True
                 messages.success(request, 'Bienvenido administrador')
                 return render(request, 'lista_usuarios.html')
             else:
                 messages.error(request, 'Usuario o contraseña incorrecta')
+                return render(request, 'administrador/inicio_sesion.html')
+        else:
+            messages.error(request, 'Usuario no encontrado')
+            return render(request, 'administrador/inicio_sesion.html')
     return render(request, 'administrador/inicio_sesion.html')
+
+
+
 
 
 #  registro administrador
@@ -232,6 +239,45 @@ def registro_administrador(request):
         messages.success(request, '¡ya estas registrado!')
         return render(request, 'administrador/registro.html')
     
+
+
+    
+
+    # Lista de administradores
+def lista_administrador(request):
+    administradores = Administrador.objects.all()
+    return render(request, 'lista_usuarios.html', {'administrador': administradores})
+
+# Crear administrador
+def crear_administrador(request):
+    if request.method == 'POST':
+        form = Administrador(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_administrador')
+    else:
+        form = Administrador()
+    return render(request, 'crud_administrador/crear_administrador.html', {'form': form})
+
+# Editar administrador
+def editar_administrador(request, pk):
+    administrador = Administrador.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = Administrador(request.POST, instance=administrador)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_usuarios.html')
+    else:
+        form = Administrador(instance=administrador)
+    return render(request, 'crud_administrador/editar_administrador.html', {'form': form, 'administrador': administrador})
+
+# Eliminar administrador
+def eliminar_administrador(request, pk):
+    administrador = Administrador.objects.get(pk=pk)
+    if request.method == 'POST':
+        administrador.delete()
+        return redirect('lista_usuarios.html')
+    return render(request, 'crud_administrador/confirmar_eliminar_administrador.html', {'administrador': administrador})
 
 
 

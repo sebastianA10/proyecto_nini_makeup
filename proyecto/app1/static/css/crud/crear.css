@@ -1,67 +1,73 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #c9c9c9;
-    color: #fff;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    background-color: #f5f5f5;
 }
 
-/* Encabezado */
-h1 {
-    
-    text-align: center;
-    background-color: pink;
-    color: #ffffff;
-    padding: 20px;
-    margin: 0;
-}
-
-/* Formulario */
-form {
-    max-width:500px;
+.container {
+    max-width: 960px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgb(255, 255, 255); /* Fondo blanco semi-transparente */
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    color: #ff4fb6;
 }
 
-/* Campos del formulario */
-form input[type="text"],
-form input[type="password"] {
-    width: 90%;
-    padding: 10px;
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilos del formulario */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
     margin-bottom: 10px;
-    border:none ;
-    /* border-color: black; */
-    background-color: rgba(88, 63, 63, 0.2); /* Fondo blanco semi-transparente */
-    color: #000000;
-    border-radius: 3px;
+    font-weight: bold;
 }
 
-/* Botón del formulario */
-form button[type="submit"] {
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
     width: 100%;
     padding: 10px;
-    background-color: #ff4fb6; /* Botón naranja */
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #dd7b79;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* Enlace para volver a la lista de usuarios */
-a {
+button[type="submit"]:hover {
+    background-color: #c26966;
+}
+
+/* Estilos del enlace de volver */
+.back-link {
     display: block;
+    margin-top: 20px;
     text-align: center;
-    color: pink; /* Color naranja */
     text-decoration: none;
-    margin-top: 10px;
+    color: #dd7b79;
+    font-weight: bold;
 }
 
-/* Estilo para el enlace al pasar el mouse */
-a:hover {
-    text-decoration: underline;
+.back-link:hover {
+    color: #c26966;
 }

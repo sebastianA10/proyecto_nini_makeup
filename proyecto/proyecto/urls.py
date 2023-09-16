@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path
+from proyecto.views import crear_administrador, editar_administrador, eliminar_administrador, lista_administrador
 from proyecto.views import inicio, registro, valida_login, lista_usuarios, crear_usuario, editar_usuario, eliminar_usuario, administrador, registro_administrador
 
 urlpatterns = [
@@ -27,4 +28,10 @@ urlpatterns = [
 
     # url registro addministrador
      path('registro_administrador/', registro_administrador, name='registro_administrador'),   
+
+    #  url de crud para administrador
+    path('administrador/', lista_administrador, name='lista_administradores'),
+    path('administrador/crear/', crear_administrador, name='crear_administrador'),
+    path('administrador/editar/<int:pk>/', editar_administrador, name='editar_administrador'),
+    path('administrador/eliminar/<int:pk>/', eliminar_administrador, name='eliminar_administrador'),
 ]

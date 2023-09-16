@@ -36,7 +36,11 @@
                         <a class="nav-link" href="./pqr/pqr.html" style="color: #dd7b79;">pqrs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'administrador' %}" style="color: #dd7b79;">administrador</a>
+                        {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'administrador' %}" style="color: #dd7b79;">
+                            {{ user.usuariopersonalizado.nombres }}
+                        </a>
+                    {% endif %}
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0 mx-auto">
