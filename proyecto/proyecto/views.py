@@ -5,6 +5,14 @@ from app1.models import Usuarios, Administrador
 from app1.forms import UsuariosForm
 from django.shortcuts import render, redirect, get_object_or_404
 
+# nombre usuario en index
+
+
+# logout
+def user_logout(request):
+   
+    return render(request, 'index.html')
+
 
 
 # index
@@ -42,7 +50,7 @@ def registro(request):
         nuevo_usuario.save()
 
         messages.success(request, '¡Usuario registrado exitosamente!')
-        return render(request, 'registro.html')
+        return render(request, 'index.html')
     else:
 
         messages.success(request, '¡Ya estás registrado!')
@@ -123,7 +131,7 @@ def valida_login(request):
             
             if passw:
                 request.session['seguridad'] = True
-                return render(request, 'index.html')
+                return render(request, 'inicio_sesion/index.html')
             else:
                 messages.error(request, 'Usuario o contraseña incorrecta')
                 return render(request, 'login.html')
@@ -260,6 +268,7 @@ def crear_administrador(request):
     return render(request, 'crud_administrador/crear_administrador.html', {'form': form})
 
 # Editar administrador
+
 def editar_administrador(request, pk):
     administrador = Administrador.objects.get(pk=pk)
     if request.method == 'POST':
