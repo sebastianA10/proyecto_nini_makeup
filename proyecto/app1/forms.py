@@ -1,12 +1,12 @@
 from django import forms
-from .models import Usuarios, Administrador
+from .models import Usuarios, empleados
 
 class UsuariosForm(forms.ModelForm):
     class Meta:
         model = Usuarios
-        fields = ['nombre', 'apellidos', 'celular', 'email', 'direccion', 'contrasena', 'estado']
+        fields = ['nombres', 'apellidos', 'celular', 'email', 'direccion', 'contrasena', 'estado']
 
-class AdministradorForm(forms.ModelForm):
+class empleadosForm(forms.ModelForm):
     class Meta:
-        model = Administrador
+        model = empleados
         fields = ['nombres', 'apellidos', 'email', 'celular', 'genero','contrasena']

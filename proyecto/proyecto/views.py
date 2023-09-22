@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
-from app1.models import Usuarios, Administrador
+from app1.models import Usuarios, empleados
 from app1.forms import UsuariosForm
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -28,7 +28,7 @@ def inicio(request):
 
 def registro(request):
     if request.method == 'POST':
-        nombre = request.POST.get('nombre')
+        nombres = request.POST.get('nombres')
         apellidos = request.POST.get('apellidos')
         celular = request.POST.get('celular')
         email = request.POST.get('email')
@@ -46,7 +46,7 @@ def registro(request):
 
         # Crear un nuevo usuario con los datos proporcionados
 
-        nuevo_usuario = Usuarios(nombre=nombre, apellidos=apellidos, celular=celular, email=email, direccion=direccion, contrasena=contrasena_hasheada)
+        nuevo_usuario = Usuarios(nombres=nombres, apellidos=apellidos, celular=celular, email=email, direccion=direccion, contrasena=contrasena_hasheada)
         nuevo_usuario.save()
 
         messages.success(request, '¡Usuario registrado exitosamente!')
@@ -187,35 +187,35 @@ def eliminar_usuario(request, pk):
         return redirect('lista_usuarios')
     return render(request, 'eliminar_usuario.html', {'usuario': usuario})
 
-# login administrador
+# login empleados
 
-def administrador(request):
+def empleados(request):
     if request.method == 'POST':
         usu = request.POST.get('email')
         contra = request.POST.get('contrasena')
 
-        if Administrador.objects.filter(email=usu).exists():
-            logueo = Administrador.objects.get(email=usu)  # Correct capitalization here
+        if empleados.objects.filter(email=usu).exists():
+            logueo = empleados.objects.get(email=usu)  # Correct capitalization here
             passw = check_password(contra, logueo.contrasena)  # Use check_password function
 
             if passw:
                 request.session['seguridad'] = True
-                messages.success(request, 'Bienvenido administrador')
+                messages.success(request, 'Bienvenido empleados')
                 return render(request, 'lista_usuarios.html')
             else:
                 messages.error(request, 'Usuario o contraseña incorrecta')
-                return render(request, 'administrador/inicio_sesion.html')
+                return render(request, 'empleados/inicio_sesion.html')
         else:
             messages.error(request, 'Usuario no encontrado')
-            return render(request, 'administrador/inicio_sesion.html')
-    return render(request, 'administrador/inicio_sesion.html')
+            return render(request, 'empleados/inicio_sesion.html')
+    return render(request, 'empleados/inicio_sesion.html')
 
 
 
 
 
-#  registro administrador
-def registro_administrador(request):
+#  registro empleados
+def registro_empleados(request):
     if request.method == 'POST':
         nombres = request.POST.get('nombres')
         apellidos = request.POST.get('apellidos')
@@ -229,8 +229,8 @@ def registro_administrador(request):
 
         # Realiza la validación de datos aquí (si es necesario)
 
-        # Crea un nuevo administrador con los datos proporcionados
-        nuevo_administrador = Administrador(
+        # Crea un nuevo empleados con los datos proporcionados
+        nuevo_empleados = empleados(
             nombres=nombres,
             apellidos=apellidos,
             email=email,
@@ -238,55 +238,55 @@ def registro_administrador(request):
             genero=genero,
             contrasena=contrasena_hasheada
         )
-        nuevo_administrador.save()
+        nuevo_empleados.save()
 
         messages.success(request, '¡Usuario registrado exitosamente!')
-        return render(request, 'administrador/inicio_sesion.html')
+        return render(request, 'empleados/inicio_sesion.html')
     else:
         
         messages.success(request, '¡ya estas registrado!')
-        return render(request, 'administrador/registro.html')
+        return render(request, 'empleados/registro.html')
     
 
 
     
 
-    # Lista de administradores
-def lista_administrador(request):
-    administradores = Administrador.objects.all()
-    return render(request, 'lista_usuarios.html', {'administrador': administradores})
+    # Lista de empleadoses
+def lista_empleados(request):
+    empleadoses = empleados.objects.all()
+    return render(request, 'lista_usuarios.html', {'empleados': empleadoses})
 
-# Crear administrador
-def crear_administrador(request):
+# Crear empleados
+def crear_empleados(request):
     if request.method == 'POST':
-        form = Administrador(request.POST)
+        form = empleados(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lista_administrador')
+            return redirect('lista_empleados')
     else:
-        form = Administrador()
-    return render(request, 'crud_administrador/crear_administrador.html', {'form': form})
+        form = empleados()
+    return render(request, 'crud_empleados/crear_empleados.html', {'form': form})
 
-# Editar administrador
+# Editar empleados
 
-def editar_administrador(request, pk):
-    administrador = Administrador.objects.get(pk=pk)
+def editar_empleados(request, pk):
+    empleados = empleados.objects.get(pk=pk)
     if request.method == 'POST':
-        form = Administrador(request.POST, instance=administrador)
+        form = empleados(request.POST, instance=empleados)
         if form.is_valid():
             form.save()
             return redirect('lista_usuarios.html')
     else:
-        form = Administrador(instance=administrador)
-    return render(request, 'crud_administrador/editar_administrador.html', {'form': form, 'administrador': administrador})
+        form = empleados(instance=empleados)
+    return render(request, 'crud_empleados/editar_empleados.html', {'form': form, 'empleados': empleados})
 
-# Eliminar administrador
-def eliminar_administrador(request, pk):
-    administrador = Administrador.objects.get(pk=pk)
+# Eliminar empleados
+def eliminar_empleados(request, pk):
+    empleados = empleados.objects.get(pk=pk)
     if request.method == 'POST':
-        administrador.delete()
+        empleados.delete()
         return redirect('lista_usuarios.html')
-    return render(request, 'crud_administrador/confirmar_eliminar_administrador.html', {'administrador': administrador})
+    return render(request, 'crud_empleados/confirmar_eliminar_empleados.html', {'empleados': empleados})
 
 
 

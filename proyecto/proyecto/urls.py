@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-from proyecto.views import crear_administrador, editar_administrador, eliminar_administrador, lista_administrador
-from proyecto.views import inicio, registro, valida_login, lista_usuarios, crear_usuario, editar_usuario, eliminar_usuario, administrador, registro_administrador,user_logout
+from proyecto.views import crear_empleados, editar_empleados, eliminar_empleados, lista_empleados
+from proyecto.views import inicio, registro, valida_login, lista_usuarios, crear_usuario, editar_usuario, eliminar_usuario, empleados, registro_empleados,user_logout
 
 urlpatterns = [
 
-    # url administrador
+    # url empleados
     path('admin/', admin.site.urls),
     
     # url pagina principal
@@ -23,17 +23,17 @@ urlpatterns = [
     # url login usuarios
     path('valida_login/', valida_login, name='valida_login'),
     
-    # url login administrador
-     path('administrador/', administrador, name='administrador'),
+    # url login empleados
+     path('empleados/', empleados, name='empleados'),
 
     # url registro addministrador
-     path('registro_administrador/', registro_administrador, name='registro_administrador'),   
+     path('registro_empleados/', registro_empleados, name='registro_empleados'),   
 
-    #  url de crud para administrador
-    path('administrador/', lista_administrador, name='lista_administradores'),
-    path('administrador/crear/', crear_administrador, name='crear_administrador'),
-    path('administrador/editar/<int:pk>/', editar_administrador, name='editar_administrador'),
-    path('administrador/eliminar/<int:pk>/', eliminar_administrador, name='eliminar_administrador'),
+    #  url de crud para empleados
+    path('empleados/', lista_empleados, name='lista_empleadoses'),
+    path('empleados/crear/', crear_empleados, name='crear_empleados'),
+    path('empleados/editar/<int:pk>/', editar_empleados, name='editar_empleados'),
+    path('empleados/eliminar/<int:pk>/', eliminar_empleados, name='eliminar_empleados'),
     # logout
     path('logout/', user_logout, name='logout'),
 ]

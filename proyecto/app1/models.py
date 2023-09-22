@@ -2,7 +2,7 @@ from django.db import models
 
 class Usuarios(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=254)
+    nombres = models.CharField(max_length=254)
     apellidos = models.CharField(max_length=255)
     celular = models.BigIntegerField()
     email = models.CharField(max_length=254)
@@ -15,7 +15,7 @@ class Usuarios(models.Model):
         managed = False
         db_table = 'usuarios'  # Especifica la tabla para este modelo
 
-class Administrador(models.Model):
+class empleados(models.Model):
     id = models.AutoField(primary_key=True)
     nombres = models.CharField(max_length=254)
     apellidos = models.CharField(max_length=255)
@@ -23,7 +23,7 @@ class Administrador(models.Model):
     celular = models.BigIntegerField()
     genero = models.CharField(max_length=255)
     contrasena = models.CharField(max_length=500)
-
+    created_at = models.DateTimeField(auto_now_add=True)
     class Meta:
         managed = False
-        db_table = 'administrador'
+        db_table = 'empleados'

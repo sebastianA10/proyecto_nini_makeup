@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTION':{'init_command':"Set sql_mode='STRICT_TRANS_TABLES'"},
-        'NAME': 'proyecto',
+        'NAME': 'nini makeup',
         'USER': 'root',
         'PASSWORD': 'Z8pabdAfXFFvzoNftVUm',
         'HOST': 'containers-us-west-179.railway.app',

@@ -37,7 +37,7 @@
                     </li>
                     <li class="nav-item">
                         {% if user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'administrador' %}" style="color: #dd7b79;">
+                        <a class="nav-link" href="{% url 'empleados' %}" style="color: #dd7b79;">
                             {{ user.usuariopersonalizado.nombres }}
                         </a>
                     {% endif %}

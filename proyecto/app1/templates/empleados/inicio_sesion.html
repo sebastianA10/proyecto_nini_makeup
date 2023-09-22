@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link type='text/css' href='{% static "css/administrador/css.css" %}' rel='stylesheet'/>
+    <link type='text/css' href='{% static "css/empleados/css.css" %}' rel='stylesheet'/>
     <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/carrito/css.css' %}">
-    <link rel="stylesheet" href="{% static 'css/administrador/css.css' %}">
 
 </head>
 
@@ -26,8 +25,8 @@
     </div>
     {% endif %}
     
-    <form action="/administrador/" method="post">
-        <h1>administradores</h1>
+    <form action="/empleados" method="post">
+        <h1>empleados</h1>
          
         
 
@@ -48,7 +47,7 @@
         <button type="submit" class="btn">iniciar sesion</button>
     
         <div class="register-link">
-            <p>no estas registrado? <a href="{% url 'registro_administrador' %}">Registrarse</a></p>
+            <p>no estas registrado? <a href="{% url 'registro_empleados' %}">Registrarse</a></p>
         </div>
     </form>
 </div>
