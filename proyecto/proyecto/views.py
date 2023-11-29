@@ -292,24 +292,24 @@ def eliminar_empleados(request, pk):
 
  # productos 
 
-class Vistaproductos(View):
-    def get(self, request):
-        productos = list(Productos.objects.values())
-        if len(productos) > 0:
-            datos = {'message': "Success", 'productos': productos}
-        else:
-            datos = {'message': "Productos not found..."}
+# class Vistaproductos(View):
+#     def get(self, request):
+#         productos = list(Productos.objects.values())
+#         if len(productos) > 0:
+#             datos = {'message': "Success", 'productos': productos}
+#         else:
+#             datos = {'message': "Productos not found..."}
 
-        return JsonResponse(datos)
+#         return JsonResponse(datos)
     
-    def post(self, request):
-        # Agrega lógica para manejar la solicitud POST
-        pass
+#     def post(self, request):
+#         # Agrega lógica para manejar la solicitud POST
+#         pass
     
-    def put(self, request):
-        # Agrega lógica para manejar la solicitud PUT
-        pass
+#     def put(self, request):
+#         # Agrega lógica para manejar la solicitud PUT
+#         pass
     
-    def delete(self, request):
-        # Agrega lógica para manejar la solicitud DELETE
-        pass
+#     def delete(self, request):
+#         # Agrega lógica para manejar la solicitud DELETE
+#         pass

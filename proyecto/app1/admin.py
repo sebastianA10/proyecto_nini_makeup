@@ -11,4 +11,3 @@ class empleadosAdmin(admin.ModelAdmin):
 
 # Register the model with the custom admin class
 # admin.site.register(empleados, empleadosAdmin, Productos)
-admin.site.register(Productos)

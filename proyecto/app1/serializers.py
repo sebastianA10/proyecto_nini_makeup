@@ -1,16 +1,17 @@
 from app1.models import Usuarios
 from app1 import serializers
+from app1.models import Productos
 
-class UsuariosSerializer(serializers.ModelSerializer):
+class productosSerializer(serializers.ModelSerializer):
     class Meta: 
-        model = Usuarios
-        fields = ['nombres', 'apellidos', 'celular', 'email', 'direccion', 'contrasena', 'is_active']
+        model = Productos
+        fields = ['nombres', 'cantidad', 'precio', 'created_at']
 
     def validate_nombres(self, value):
         if len(value) < 3:
             raise serializers.ValidationError({'nombres': 'Los nombres deben tener al menos 3 caracteres'})
 
-    def validate_apellidos(self, value):
+    def validate_cantidad(self, value):
         if len(value) < 3:
             raise serializers.ValidationError({'apellidos': 'Los apellidos deben tener al menos 3 caracteres'})
 

@@ -5,5 +5,4 @@ from proyecto.views import Vistaproductos
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('empleados/', include('app1.urls')),
-    path('productos/', Vistaproductos.as_view(), name='productos_list')
 ]

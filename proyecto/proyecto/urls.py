@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from proyecto.views import crear_empleados, editar_empleados, eliminar_empleados, lista_empleados
 from proyecto.views import inicio, registro, valida_login, lista_usuarios, crear_usuario, editar_usuario, eliminar_usuario, empleados, registro_empleados,user_logout
-from proyecto.views import Vistaproductos
+
 urlpatterns = [
 
     # url empleados
@@ -38,5 +38,6 @@ urlpatterns = [
     path('logout/', user_logout, name='logout'),
     
     # apirest
-    path('productos/', include('app1.urls'))
+    
+    
 ]
