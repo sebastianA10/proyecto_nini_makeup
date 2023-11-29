@@ -32,3 +32,17 @@ class empleados(models.Model):
     class Meta:
         managed = False
         db_table = 'empleados'
+
+
+class Productos(models.Model):
+    nombres = models.CharField(max_length=45, blank=True, null=True)
+    cantidad = models.CharField(max_length=450, blank=True, null=True)
+    precio = models.CharField(max_length=45, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'productos'
+       
+
+

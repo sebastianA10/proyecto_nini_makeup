@@ -1,7 +1,9 @@
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
-from app1.models import Usuarios, empleados
+from django.views import View
+from app1.models import Productos, Usuarios, empleados
 from app1.forms import UsuariosForm
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -48,7 +50,7 @@ def registro(request):
         nuevo_usuario.save()
 
         
-        nuevo_usuario = Usuarios(nombres=nombres, apellidos=apellidos, celular=celular, emai=email)
+        nuevo_usuario = Usuarios(nombres=nombres, apellidos=apellidos, celular=celular, email=email)
         registration_successful = True
 
         if registration_successful:
@@ -288,7 +290,26 @@ def eliminar_empleados(request, pk):
     return render(request, 'crud_empleados/confirmar_eliminar_empleados.html', {'empleados': empleados})
 
 
+ # productos 
 
+class Vistaproductos(View):
+    def get(self, request):
+        productos = list(Productos.objects.values())
+        if len(productos) > 0:
+            datos = {'message': "Success", 'productos': productos}
+        else:
+            datos = {'message': "Productos not found..."}
 
-
+        return JsonResponse(datos)
     
+    def post(self, request):
+        # Agrega lógica para manejar la solicitud POST
+        pass
+    
+    def put(self, request):
+        # Agrega lógica para manejar la solicitud PUT
+        pass
+    
+    def delete(self, request):
+        # Agrega lógica para manejar la solicitud DELETE
+        pass
