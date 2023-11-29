@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import Usuarios, empleados
+from app1.models import Usuarios, empleados
 
 @admin.register(Usuarios)
 class UsuariosAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombres', 'apellidos', 'celular', 'email', 'direccion', 'contrasena', 'estado', 'created_at')
+    list_display = ('id', 'nombres', 'apellidos', 'celular', 'email', 'direccion', 'contrasena','created_at','estado_usuarios_id')
 
 class empleadosAdmin(admin.ModelAdmin):
-    list_display = ('id','nombres', 'apellidos', 'email', 'celular', 'genero', 'contrasena')
+    list_display = ('id','nombres', 'apellidos', 'email', 'celular', 'genero', 'contrasena', 'cargo_id', 'estado_empleados_id')
 
 # Register the model with the custom admin class
 admin.site.register(empleados, empleadosAdmin)

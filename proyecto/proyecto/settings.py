@@ -75,20 +75,25 @@ TEMPLATES = [
 WSGI_APPLICATION = "proyecto.wsgi.application"
 
 
+APPEND_SLASH = True
+
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTION':{'init_command':"Set sql_mode='STRICT_TRANS_TABLES'"},
-        'NAME': 'nini makeup',
-        'USER': 'root',
-        'PASSWORD': 'Z8pabdAfXFFvzoNftVUm',
-        'HOST': 'containers-us-west-179.railway.app',
-        'PORT': '6753'
-    }
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            },
+        'NAME': 'blberepzrpnvxnlugwkz',
+        'USER': 'ulzudrkmormsmvze',
+        'PASSWORD': 'iGkPAjZypDyIK79LXniY',
+        'HOST': 'blberepzrpnvxnlugwkz-mysql.services.clever-cloud.com',
+        'PORT': '3306'  }
 }
+
 
 
 # Password validation

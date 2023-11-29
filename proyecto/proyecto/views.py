@@ -35,29 +35,28 @@ def registro(request):
         direccion = request.POST.get('direccion')
         contrasena = request.POST.get('contrasena')
 
-
-        # Hash the password before saving it to the database
-        contrasena_hasheada = make_password(contrasena)
-
-        # Create a new user with the data provided
+        # Validar que el campo 'celular' contenga solo números
+        if not celular.isdigit():
+            messages.error(request, 'El número de celular debe contener solo dígitos.')
+            return redirect('registro')
 
         # Hashear la contraseña antes de guardarla en la base de datos
         contrasena_hasheada = make_password(contrasena)
 
         # Crear un nuevo usuario con los datos proporcionados
-
         nuevo_usuario = Usuarios(nombres=nombres, apellidos=apellidos, celular=celular, email=email, direccion=direccion, contrasena=contrasena_hasheada)
         nuevo_usuario.save()
 
-        messages.success(request, '¡Usuario registrado exitosamente!')
-        return render(request, 'index.html')
-    else:
-
-        messages.success(request, '¡Ya estás registrado!')
         
-        messages.success(request, '¡ya estas registrado!')
+        nuevo_usuario = Usuarios(nombres=nombres, apellidos=apellidos, celular=celular, emai=email)
+        registration_successful = True
+
+        if registration_successful:
+            messages.success(request,'¡Usuario registrado exitosamente!')
+            return render(request, 'index.html')
+    else:
+        messages.warning(request, '¡Ya estás registrado!')
         return render(request, 'registro.html')
-    
 
 
 
