@@ -1,24 +1,26 @@
-from app1.models import Usuarios
-from app1 import serializers
+from rest_framework import serializers
 from app1.models import Productos
 
 class productosSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Productos
         fields = ['nombres', 'cantidad', 'precio', 'created_at']
+        read_only_fields = ('created_at', )
 
     def validate_nombres(self, value):
         if len(value) < 3:
-            raise serializers.ValidationError({'nombres': 'Los nombres deben tener al menos 3 caracteres'})
+            raise serializers.ValidationError('Los nombres deben tener al menos 3 caracteres')
+        return value
 
     def validate_cantidad(self, value):
-        if len(value) < 3:
-            raise serializers.ValidationError({'apellidos': 'Los apellidos deben tener al menos 3 caracteres'})
+        # Asegúrate de que 'value' sea un entero antes de comparar
+        try:
+            cantidad = int(value)
+        except ValueError:
+            raise serializers.ValidationError("La cantidad debe ser un número entero.")
 
-    def validate_email(self, value):
-        if not value.endswith('@example.com'):
-            raise serializers.ValidationError({'email': 'El correo electrónico debe terminar con @example.com'})
+        # Ahora puedes comparar 'cantidad' como un entero
+        if cantidad < 0:
+            raise serializers.ValidationError("La cantidad debe ser mayor o igual a cero.")
 
-    def validate_contrasena(self, value):
-        if len(value) < 8:
-            raise serializers.ValidationError({'contrasena': 'La contraseña debe tener al menos 8 caracteres'})
+        return cantidad

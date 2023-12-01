@@ -292,24 +292,27 @@ def eliminar_empleados(request, pk):
 
  # productos 
 
-# class Vistaproductos(View):
-#     def get(self, request):
-#         productos = list(Productos.objects.values())
-#         if len(productos) > 0:
-#             datos = {'message': "Success", 'productos': productos}
-#         else:
-#             datos = {'message': "Productos not found..."}
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
-#         return JsonResponse(datos)
-    
-#     def post(self, request):
-#         # Agrega lógica para manejar la solicitud POST
-#         pass
-    
-#     def put(self, request):
-#         # Agrega lógica para manejar la solicitud PUT
-#         pass
-    
-#     def delete(self, request):
-#         # Agrega lógica para manejar la solicitud DELETE
-#         pass
+from app1.models import Productos
+from app1.serializers import productosSerializer
+
+class ProductosViewSet(APIView):
+    def get(self, request, *args, **kwargs):
+        productos = Productos.objects.all()
+        serializer = productosSerializer(productos, many=True)
+        return Response({'message': 'Success', 'productos': serializer.data}, status=status.HTTP_200_OK)
+
+    def post(self, request, *args, **kwargs):
+        # Agrega lógica para manejar la solicitud POST
+        pass
+
+    def put(self, request, *args, **kwargs):
+        # Agrega lógica para manejar la solicitud PUT
+        pass
+
+    def delete(self, request, *args, **kwargs):
+        # Agrega lógica para manejar la solicitud DELETE
+        pass

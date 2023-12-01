@@ -1,8 +1,6 @@
-from django.contrib import admin
-from django.urls import path, include
-from proyecto.views import Vistaproductos
+from rest_framework import routers
+from .api import productosViewsSet
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('empleados/', include('app1.urls')),
-]
+router = routers.DefaultRouter()
+router.register('api/app1', productosViewsSet, 'app1')
+urlpatterns = router.urls

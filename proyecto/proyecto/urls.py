@@ -39,5 +39,6 @@ urlpatterns = [
     
     # apirest
     
+    path('', include ('app1.urls'))
     
 ]
