@@ -43,6 +43,16 @@ class Productos(models.Model):
     class Meta:
         managed = False
         db_table = 'productos'
+
+class ProductosRegistro(models.Model):
+    nombre = models.CharField(max_length=250, blank=True, null=True)
+    precio = models.IntegerField(blank=True, null=True)
+    create_at = models.DateTimeField(blank=True, null=True)
+    cantidad = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'productos_registro'
        
 
 
