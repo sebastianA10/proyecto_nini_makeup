@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app1.models import Usuarios, empleados, Productos
+from app1.models import Usuarios, empleados, ProductosRegistro
 
 @admin.register(Usuarios)
 class UsuariosAdmin(admin.ModelAdmin):
@@ -10,4 +10,4 @@ class empleadosAdmin(admin.ModelAdmin):
 
 
 # Register the model with the custom admin class
-# admin.site.register(empleados, empleadosAdmin, Productos)
+# admin.site.register(empleados, empleadosAdmin, ProductosRegistro)

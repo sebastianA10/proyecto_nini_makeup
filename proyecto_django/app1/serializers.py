@@ -1,10 +1,10 @@
 from rest_framework import serializers
 from app1.models import ProductosRegistro
 
-class productosSerializer(serializers.ModelSerializer):
+class ProductosRegistroSerializer(serializers.ModelSerializer):
     class Meta: 
         model = ProductosRegistro
-        fields = ['nombre', 'cantidad', 'precio', 'create_at', 'id']
+        fields = ['nombre', 'cantidad', 'precio', 'create_at']
         read_only_fields = ('create_at', )
 
     def validate_nombres(self, value):

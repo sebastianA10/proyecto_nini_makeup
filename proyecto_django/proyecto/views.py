@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 from django.views import View
-from app1.models import Productos, Usuarios, empleados
+from app1.models import ProductosRegistro, Usuarios, empleados
 from app1.forms import UsuariosForm
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -290,19 +290,18 @@ def eliminar_empleados(request, pk):
     return render(request, 'crud_empleados/confirmar_eliminar_empleados.html', {'empleados': empleados})
 
 
- # productos 
+ # productos rest framework
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from app1.models import Productos
-from app1.serializers import productosSerializer
-
-class ProductosViewSet(APIView):
+from app1.models import ProductosRegistro
+from app1.serializers import ProductosRegistroSerializer
+class ProductosRegistroViewSet(APIView):
     def get(self, request, *args, **kwargs):
-        productos = Productos.objects.all()
-        serializer = productosSerializer(productos, many=True)
+        productos = ProductosRegistro.objects.all()
+        serializer = ProductosRegistroSerializer(ProductosRegistro, many=True)
         return Response({'message': 'Success', 'productos': serializer.data}, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):

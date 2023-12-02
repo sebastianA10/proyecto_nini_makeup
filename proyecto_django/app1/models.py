@@ -34,21 +34,13 @@ class empleados(models.Model):
         db_table = 'empleados'
 
 
-class Productos(models.Model):
-    nombres = models.CharField(max_length=45, blank=True, null=True)
-    cantidad = models.CharField(max_length=450, blank=True, null=True)
-    precio = models.CharField(max_length=45, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'productos'
 
 class ProductosRegistro(models.Model):
     nombre = models.CharField(max_length=250, blank=True, null=True)
+    cantidad = models.IntegerField(blank=True, null=True)
     precio = models.IntegerField(blank=True, null=True)
     create_at = models.DateTimeField(blank=True, null=True)
-    cantidad = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
