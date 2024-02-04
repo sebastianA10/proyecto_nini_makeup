@@ -14,6 +14,7 @@
 
 <body>    
 <div class="wrapper">
+    
     <!-- Agrega un bloque para mostrar los mensajes -->
     {% if messages %}
     <div class="messages">
@@ -25,7 +26,7 @@
     </div>
     {% endif %}
     
-    <form action="/empleados" method="post">
+    <form action="/empleados_1/" method="post">
         <h1>empleados</h1>
          
         
@@ -47,7 +48,7 @@
         <button type="submit" class="btn">iniciar sesion</button>
     
         <div class="register-link">
-            <p>no estas registrado? <a href="{% url 'registro_empleados' %}">Registrarse</a></p>
+
         </div>
     </form>
 </div>

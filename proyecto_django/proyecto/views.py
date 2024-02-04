@@ -4,8 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 from django.views import View
 from app1.models import ProductosRegistro, Usuarios, empleados
-from app1.forms import UsuariosForm
+from app1.forms import UsuariosForm, empleadosForm
 from django.shortcuts import render, redirect, get_object_or_404
+from app1.models import empleados
 
 # nombre usuario en index
 
@@ -190,29 +191,28 @@ def eliminar_usuario(request, pk):
 
 # login empleados
 
-def empleados(request):
+
+
+def empleados_1(request):
     if request.method == 'POST':
-        usu = request.POST.get('email')
-        contra = request.POST.get('contrasena')
+        email = request.POST.get('email')
+        contrasena = request.POST.get('contrasena')
 
-        if empleados.objects.filter(email=usu).exists():
-            logueo = empleados.objects.get(email=usu)  # Correct capitalization here
-            passw = check_password(contra, logueo.contrasena)  # Use check_password function
-
-            if passw:
-                request.session['seguridad'] = True
-                messages.success(request, 'Bienvenido empleados')
-                return render(request, 'lista_usuarios.html')
-            else:
-                messages.error(request, 'Usuario o contraseña incorrecta')
-                return render(request, 'empleados/inicio_sesion.html')
-        else:
-            messages.error(request, 'Usuario no encontrado')
+        try:
+            empleado = empleadosForm.objects.get(email=email)
+        except empleados_1.DoesNotExist:
+            messages.error(request, 'Usuario o contraseña incorrecta')
             return render(request, 'empleados/inicio_sesion.html')
+
+        if check_password(contrasena, empleado.contrasena):  
+            request.session['seguridad'] = True
+            messages.success(request, 'Bienvenido empleados')
+            return redirect('nombre_de_tu_vista')  # Reemplaza 'nombre_de_tu_vista' con el nombre correcto de tu vista
+        else:
+            messages.error(request, 'Usuario o contraseña incorrecta')
+            return render(request, 'empleados/inicio_sesion.html')
+
     return render(request, 'empleados/inicio_sesion.html')
-
-
-
 
 
 #  registro empleados
@@ -301,7 +301,7 @@ from app1.serializers import ProductosRegistroSerializer
 class ProductosRegistroViewSet(APIView):
     def get(self, request, *args, **kwargs):
         productos = ProductosRegistro.objects.all()
-        serializer = ProductosRegistroSerializer(ProductosRegistro, many=True)
+        serializer = ProductosRegistro(ProductosRegistro, many=True)
         return Response({'message': 'Success', 'productos': serializer.data}, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):

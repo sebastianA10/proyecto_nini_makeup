@@ -7,18 +7,18 @@ base de datos mysql en la nuve
 mysql://root:Z8pabdAfXFFvzoNftVUm@containers-us-west-179.railway.app:6753/railway
 
 2. MYSQLDATABASE
-railway
+blberepzrpnvxnlugwkz
 
 3. MYSQLHOST
-containers-us-west-179.railway.app
+blberepzrpnvxnlugwkz-mysql.services.clever-cloud.com
 
 4. MYSQLPASSWORD
-Z8pabdAfXFFvzoNftVUm
+iGkPAjZypDyIK79LXniY
 
 5. MYSQLPORT
-6753
+3306
 
 6. MYSQLUSER
-root
+ulzudrkmormsmvze
 
 

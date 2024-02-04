@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 CORS_ORIGIN_WHITELIST=(
     'http://localhost:4200',
+    "http://localhost:3000",
 )
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware', 
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 
 ]
 

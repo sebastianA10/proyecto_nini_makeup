@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import include, path
-from proyecto.views import crear_empleados, editar_empleados, eliminar_empleados, lista_empleados
+from proyecto.views import crear_empleados, editar_empleados, eliminar_empleados, empleados_1, lista_empleados
 from proyecto.views import inicio, registro, valida_login, lista_usuarios, crear_usuario, editar_usuario, eliminar_usuario, empleados, registro_empleados,user_logout
 
 urlpatterns = [
@@ -24,10 +24,10 @@ urlpatterns = [
     path('valida_login/', valida_login, name='valida_login'),
     
     # url login empleados
-     path('empleados/', empleados, name='empleados'),
+    path('empleados_1/', empleados_1, name='empleados_1'),
 
     # url registro addministrador
-     path('registro_empleados/', registro_empleados, name='registro_empleados'),   
+    path('registro_empleados/', registro_empleados, name='registro_empleados'),   
 
     #  url de crud para empleados
     path('empleados/', lista_empleados, name='lista_empleadoses'),

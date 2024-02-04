@@ -4,7 +4,7 @@ from app1.models import ProductosRegistro
 class ProductosRegistroSerializer(serializers.ModelSerializer):
     class Meta: 
         model = ProductosRegistro
-        fields = ['nombre', 'cantidad', 'precio', 'create_at']
+        fields = ['nombre', 'cantidad', 'precio']
         read_only_fields = ('create_at', )
 
     def validate_nombres(self, value):
